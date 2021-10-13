@@ -14,6 +14,7 @@ app.post('/test', (req, res) => {
 app.get('/test', (req, res) => {
   console.log(req);
   res.status(200).send();
+  res.send('<h1>Hola</h1>');
 });
 
 server.listen(3000, () => {
