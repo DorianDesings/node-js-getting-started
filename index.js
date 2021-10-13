@@ -1,10 +1,21 @@
+// require('dotenv').config();
 const express = require('express');
-const path = require('path');
-const PORT = process.env.PORT || 3000;
+const app = express();
+const http = require('http');
+const server = http.createServer(app);
 
-express()
-  .use(express.static(path.join(__dirname, 'public')))
-  .set('views', path.join(__dirname, 'views'))
-  .set('view engine', 'ejs')
-  .get('/', (req, res) => res.render('pages/index'))
-  .listen(PORT, () => console.log(`Listening on ${PORT}`));
+app.use(express.json());
+
+app.post('/test', (req, res) => {
+  console.log(req);
+  res.status(200).send();
+});
+
+app.get('/test', (req, res) => {
+  console.log(req);
+  res.status(200).send();
+});
+
+server.listen(3000, () => {
+  console.log('listening on *:3000');
+});
